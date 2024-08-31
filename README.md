@@ -1,89 +1,54 @@
-# caesar_cipher
+# Caesar Cipher
 
+This is a simple Caesar Cipher program created by Mohammed Almokhtar. The Caesar Cipher is a type of substitution cipher where each letter in the plaintext is shifted by a certain number of places down or up the alphabet.
 
+## How It Works
 
+The Caesar Cipher shifts letters in the message by a specified key. For example, with a key of 2:
+- A becomes C
+- B becomes D
+- Z wraps around to B
 
+The user can choose to either encrypt or decrypt a message.
 
+## Usage
 
+### Encrypting a Message
 
-try:
-    import pyperclip
-except ImportError:
-    pass
+1. Run the program and choose the option to encrypt by entering `e`.
+2. Enter the key, a number between 0 and 25, to shift the letters.
+3. Enter the message you want to encrypt.
+4. The program will display the encrypted message.
 
-# every possible symbol that can be encrypted/decrypted
-# you can add numbers
-# symbols as well.
-SYMBOLS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+### Decrypting a Message
 
-print('Caesar Cipher, by Mohammed Almokhtar Mohammed.a.mokhtar01@gmail.com')
-print('The Caesar cipher encrypts letters by shifting them over by a')
-print('key number. For example, a key of 2 means the letter A is')
-print('encrypted into C, the letter B encrypted into D, and so on.')
-print()
+1. Run the program and choose the option to decrypt by entering `d`.
+2. Enter the key that was used to encrypt the message.
+3. Enter the encrypted message.
+4. The program will display the decrypted message.
 
-# let the user enter if they are encrypting ot decrypting:
-while True: # ;eep;asling until the user enters e or d.
-    print('Do you want to (e)ncrypt or  (d)ecrypt?')
-    response = input('> ').lower()
-    if response.startswith('e'):
-        mode = 'encrypt'
-        break
-    elif response.startswith('d'):
-        mode = 'decrypt'
-        break
-    print('please enter the letter e or d.')
+### Example
 
-# let user enter the key to use:
-while True:
-    maxKey = len(SYMBOLS) - 1
-    print(f'Please enter the key (0 to {maxKey} to use)')
-    response = input('> ').upper()
-    if not response.isdecimal():
-        continue
+Encrypting with a key of 3:
+- Plaintext: `HELLO`
+- Ciphertext: `KHOOR`
 
-    if 0 <= int(response) < len(SYMBOLS):
-        key = int(response)
-        break
+Decrypting with the same key of 3:
+- Ciphertext: `KHOOR`
+- Plaintext: `HELLO`
 
-# let the user enter the message to encrypt/decrypt:
-print(f'Enter the message to {mode}')
-message = input('> ')
+## Installation
 
-# Caesar cipher only works on uppercase letters:
-message = message.upper()
+Ensure you have Python installed on your system. The program also uses the `pyperclip` module to copy the result to the clipboard. You can install it via pip:
 
-# stores the encrypted/decrypted form of the message:
-translated = ''
+```bash
+pip install pyperclip
+To run the program, use the following command:
+python caesar_cipher.py
+Contact
+Created by Mohammed Almokhtar
+Email: mohammed.a.mokhtar01@gmail.com
 
-# encrypted/decrypted  each symbol in the message:
-for symbol in message:
-    if symbol in SYMBOLS:
-        # Get the encrypted (or decrypted) number for this symbol.
-        num = SYMBOLS.find(symbol) # get the number of the symbol
-        if mode == 'encrypt':
-            num += key
-        elif mode == 'decrypt':
-            num -= key
+Acknowledgments
+This program is a classic example often used to demonstrate basic cryptography concepts.
 
-        # Handle the wrap-around if num is larger than the length of
-        # # SYMBOLS or less than 0:
-        if num >= len(SYMBOLS):
-            num -= len(SYMBOLS)
-        elif num < 0:
-            num += len(SYMBOLS)
-
-        # add encrypted/ decrypted number's symbol to traslated:
-        translated += SYMBOLS[num]
-    else:
-        # just add the symbol without encrypting/decrypting:
-        translated += symbol
-
-# display the encrypted/decrypted string to the screen:
-print(translated)
-
-try:
-    pyperclip.copy(translated)
-    print(f'Full {mode}ed text coped to clipboard.')
-except:
-    pass
