@@ -1,7 +1,7 @@
 
 # Caesar Cipher
 
-[image](https://github.com/user-attachments/assets/9aae5c1f-3306-451b-a6c1-93aa1d947fa0)
+![image](https://github.com/user-attachments/assets/9aae5c1f-3306-451b-a6c1-93aa1d947fa0)
 
 This is a simple Caesar Cipher program created by Mohammed Almokhtar. The Caesar Cipher is a type of substitution cipher where each letter in the plaintext is shifted by a certain number of places down or up the alphabet.
 
